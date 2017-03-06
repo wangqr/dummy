@@ -39,8 +39,13 @@ int main(int, char**)
         // show live and wait for a key with timeout long enough to show images
         imshow("Live", frame);
         int t = waitKey(5);
-        if (t >= 0 && t != 255) {
-            break;
+        if (t >= 0) {
+            if (t == 255) {
+                cout << "waitKey returned 255\n";
+            }
+            else {
+                break;
+            }
         }
     }
     // the camera will be deinitialized automatically in VideoCapture destructor
